@@ -58,7 +58,7 @@ function convertF(event) {
 }
 
 function convertC(event) {
-  event.preventDefaut();
+  event.preventDefault();
   let tempE = document.querySelector("#temperature");
   tempE.innerHTML = Math.round(celciusTemp);
 }

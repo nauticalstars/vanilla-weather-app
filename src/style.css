@@ -1,5 +1,5 @@
 body {
-	font-family: arial, sans-serif;
+  font-family: arial, sans-serif;
 }
 
 h1 {
@@ -58,10 +58,11 @@ li::first-letter {
   top: -34px;
 }
 
-.weather-temperature .active{
+.weather-temperature .active {
   color: black;
   cursor: default;
 }
-.weather-temperature .active:hover{
+.weather-temperature .active:hover {
   text-decoration: none;
+  cursor: default;
 }

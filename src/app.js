@@ -22,7 +22,8 @@ function displayTemp(response) {
   let windElement = document.querySelector("#Wind");
   let dateElemet = document.querySelector("#date");
   let currentIcon = document.querySelector("#icon");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celciusTemp = response.data.temperature.current;
+  temperatureElement.innerHTML = Math.round(celciusTemp);
   cityElement.innerHTML = response.data.city;
   conditionElement.innerHTML = response.data.condition.description;
   precipitationElemet.innerHTML = Math.round(
@@ -50,13 +51,23 @@ function search(city) {
 
 function convertF(event) {
   event.preventDefault();
-  let Ftemp = (14 * 9) / 5 + 32;
+  let Ftemp = (celciusTemp * 9) / 5 + 32;
+  fahrenTemp = Ftemp;
   let tempE = document.querySelector("#temperature");
   tempE.innerHTML = Math.round(Ftemp);
 }
 
+function convertC(event) {
+  even.preventDefaut();
+  let tempE = document.querySelector("#temperature");
+  tempE.innerHTML = Math.round(celciusTemp);
+}
+let celciusTemp = null;
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let fahrenheightLink = document.querySelector("#F-link");
 fahrenheightLink.addEventListener("click", convertF);
+
+let CelciusLink = document.querySelector("#C-link");
+CelciusLink.addEventListener("click", convertC);

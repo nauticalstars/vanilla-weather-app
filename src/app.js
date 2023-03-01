@@ -48,5 +48,14 @@ function search(city) {
   axios.get(Url).then(displayTemp);
 }
 
+function convertF(event) {
+  event.preventDefault();
+  let tempE = document.querySelector("#");
+  let Ftemp = (temp * 9) / 5 + 32;
+}
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheightLink = document.querySelector("#F-link");
+fahrenheightLink.addEventListener("click", convertF);

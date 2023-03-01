@@ -35,5 +35,6 @@ function displayTemp(response) {
 }
 let apiKey = "89045e8b02ffo7bc061tb52f38ead08c";
 let units = "metric";
-let Url = `https://api.shecodes.io/weather/v1/current?query={Winnipeg}&key=${apiKey}&units=${units}`;
+let city = "Paris";
+let Url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
 axios.get(Url).then(displayTemp);

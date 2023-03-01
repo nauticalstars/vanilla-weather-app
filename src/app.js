@@ -50,8 +50,9 @@ function search(city) {
 
 function convertF(event) {
   event.preventDefault();
-  let tempE = document.querySelector("#");
-  let Ftemp = (temp * 9) / 5 + 32;
+  let Ftemp = (14 * 9) / 5 + 32;
+  let tempE = document.querySelector("#temperature");
+  tempE.innerHTML = Math.round(Ftemp);
 }
 
 let form = document.querySelector("#search-form");

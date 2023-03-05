@@ -92,27 +92,5 @@ function search(city) {
   axios.get(Url).then(displayTemp);
 }
 
-function convertF(event) {
-  event.preventDefault();
-  let Ftemp = (celciusTemp * 9) / 5 + 32;
-  fahrenTemp = Ftemp;
-  CelciusLink.classList.remove("active");
-  fahrenheightLink.classList.add("active");
-  let tempE = document.querySelector("#temperature");
-  tempE.innerHTML = Math.round(Ftemp);
-}
-
-function convertC(event) {
-  event.preventDefault();
-  fahrenheightLink.classList.remove("active");
-  CelciusLink.classList.add("active");
-  let tempE = document.querySelector("#temperature");
-  tempE.innerHTML = Math.round(celciusTemp);
-}
-let celciusTemp = null;
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-let fahrenheightLink = document.querySelector("#F-link");
-fahrenheightLink.addEventListener("click", convertF);
-let CelciusLink = document.querySelector("#C-link");
-CelciusLink.addEventListener("click", convertC);

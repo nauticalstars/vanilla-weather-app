@@ -34,8 +34,41 @@ function displayTemp(response) {
   dateElemet.innerHTML = formateDate(response.data.time * 1000);
   currentIcon.setAttribute("src", response.data.condition.icon_url);
   currentIcon.setAttribute("alt", response.data.condition.icon);
+  getForecast(response.data.coordinates);
 }
 
+function displayForecast(response) {
+  console.log(response.data);
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "89045e8b02ffo7bc061tb52f38ead08c";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&units=metric&key=${apiKey}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+							<div class="weather-forecast-date">
+								${day}</div>
+							<img src="src/Img/rainy-2.svg" alt="rainy" width="36">
+							<div class="weather-forecast-temperature">
+								<span class="weather-high">18°</span> <span class="weather-low">12°</span>
+							</div>
+						</div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function handleSubmit(event) {
   event.preventDefault();
   let cityinputElement = document.querySelector("#city-input");
@@ -67,11 +100,10 @@ function convertC(event) {
   tempE.innerHTML = Math.round(celciusTemp);
 }
 let celciusTemp = null;
+displayForecast();
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
 let fahrenheightLink = document.querySelector("#F-link");
 fahrenheightLink.addEventListener("click", convertF);
-
 let CelciusLink = document.querySelector("#C-link");
 CelciusLink.addEventListener("click", convertC);

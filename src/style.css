@@ -79,8 +79,6 @@ li::first-letter {
 .weather-forecast-temperature {
   font-size: 13px;
 }
-.weather-high {
-}
 .weather-low {
   opacity: 0.6;
 }

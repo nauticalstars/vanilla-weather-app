@@ -1,16 +1,12 @@
 function formateDate(timeStamp) {
   let date = new Date(timeStamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+  let time = date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
-  return `${day} ${hours} : ${minutes}`;
+  return `${day} ${time}`;
 }
 
 function displayTemp(response) {
@@ -46,14 +42,12 @@ function getForecast(coordinates) {
 function formatDay(timeStamp) {
   let date = new Date(timeStamp * 1000);
   let day = date.getDay();
-  console.log(day);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {

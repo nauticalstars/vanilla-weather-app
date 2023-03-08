@@ -10,7 +10,6 @@ function formateDate(timeStamp) {
 }
 
 function displayTemp(response) {
-  let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let conditionElement = document.querySelector("#condition");
   let precipitationElemet = document.querySelector("#feelsLike");
@@ -18,8 +17,6 @@ function displayTemp(response) {
   let windElement = document.querySelector("#Wind");
   let dateElemet = document.querySelector("#date");
   let currentIcon = document.querySelector("#icon");
-  celciusTemp = response.data.temperature.current;
-  temperatureElement.innerHTML = Math.round(celciusTemp);
   cityElement.innerHTML = response.data.city;
   conditionElement.innerHTML = response.data.condition.description;
   precipitationElemet.innerHTML = Math.round(
